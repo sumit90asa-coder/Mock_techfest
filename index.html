@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>THE CIPHER ARCHIVE // Classified Cryptography Lab 2026</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -10,7 +10,7 @@
   <!-- Progress Tracker -->
   <div id="scroll-progress" class="scroll-progress"></div>
 
-  <!-- Custom Cursor Engine -->
+  <!-- Custom Cursor Engine (Desktop Only) -->
   <div id="cursor-dot" class="cursor-dot"></div>
   <div id="cursor-ring" class="cursor-ring"></div>
 
@@ -22,14 +22,14 @@
   <header class="top-nav">
     <div class="nav-left">
       <span class="mono-badge">[0.1]</span>
-      <span class="nav-title">CIPHER_ARCHIVE // SYS_ID: 8820-ZC26</span>
+      <span class="nav-title">CIPHER_ARCHIVE</span>
     </div>
     <div class="nav-center">
       <span class="pulse-indicator"></span>
-      <span class="nav-status">SYSTEM STATUS: <strong id="system-status-text">SECURE // ENCRYPT_MODE</strong></span>
+      <span class="nav-status">SYS: <strong id="system-status-text">SECURE // ENCRYPT</strong></span>
     </div>
     <div class="nav-right">
-      <span class="mono-dim">UTC_CLOCK</span>
+      <span class="mono-dim hide-mobile">UTC</span>
       <span id="live-clock" class="mono-data">00:00:00.000</span>
     </div>
   </header>
@@ -37,13 +37,17 @@
   <!-- Main Asymmetric Workspace Layout -->
   <main class="archive-shell">
     
-    <!-- LEFT 30%: Sticky Classified Manifest -->
+    <!-- LEFT 30%: Sticky Classified Manifest (Stacks on Mobile/Tablet) -->
     <aside class="manifest-sidebar">
       <div class="manifest-inner">
         <div class="manifest-header">
-          <span class="tag-stencil">PROTOCOL SPEC</span>
-          <h2>MANIFEST // V26.4</h2>
-          <div class="classified-stamp">DECLASSIFIED</div>
+          <div class="manifest-title-row">
+            <div>
+              <span class="tag-stencil">PROTOCOL SPEC</span>
+              <h2>MANIFEST // V26.4</h2>
+            </div>
+            <div class="classified-stamp">DECLASSIFIED</div>
+          </div>
         </div>
 
         <div class="manifest-body">
@@ -53,7 +57,7 @@
           </div>
           <div class="spec-block">
             <span class="spec-label">DIRECTIVE:</span>
-            <p class="spec-text">Inspect, manipulate, and execute cryptographic transforms across classical substitution, polyalphabetic arrays, binary bitwise masks, and cryptographic hashing pipelines.</p>
+            <p class="spec-text">Inspect, manipulate, and execute cryptographic transforms across classical substitution, polyalphabetic arrays, bitwise masks, and cryptographic digests.</p>
           </div>
 
           <div class="manifest-matrix">
@@ -116,10 +120,12 @@
       <div class="terminal-card crt-panel" id="primary-terminal">
         <div class="terminal-chrome">
           <div class="chrome-left">
-            <span class="terminal-dot red"></span>
-            <span class="terminal-dot yellow"></span>
-            <span class="terminal-dot green"></span>
-            <span class="terminal-title">PRIMARY_TRANSFORM_CHAMBER // TERMINAL_01</span>
+            <div class="dot-cluster">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+            </div>
+            <span class="terminal-title">PRIMARY_TRANSFORM // TERMINAL_01</span>
           </div>
 
           <!-- Mode Toggle Switch (Encrypt / Decrypt) -->
@@ -151,7 +157,6 @@
 
         <!-- Dynamic Key Configuration Area -->
         <div class="key-control-bar" id="key-control-container">
-          <!-- Dynamically populated based on active cipher -->
           <div class="key-inner-group" id="caesar-controls">
             <label for="caesar-shift-slider">SHIFT OFFSET [K]: <span id="caesar-shift-val" class="highlight-val">3</span></label>
             <input type="range" id="caesar-shift-slider" min="1" max="25" value="3" class="terminal-slider">
@@ -161,7 +166,7 @@
             <label for="vigenere-key-input">ALPHABETICAL PASSPHRASE [K]:</label>
             <div class="key-input-wrapper">
               <input type="text" id="vigenere-key-input" value="CIPHER" placeholder="e.g. KRYPTOS" class="terminal-input" autocomplete="off" spellcheck="false">
-              <span id="vigenere-key-error" class="input-error-msg hidden">INVALID KEY: LETTERS ONLY</span>
+              <span id="vigenere-key-error" class="input-error-msg hidden">LETTERS ONLY</span>
             </div>
           </div>
 
@@ -218,15 +223,15 @@
               <h3 class="card-title">LIVE FREQUENCY ANALYSIS</h3>
             </div>
             <div class="legend-group">
-              <span class="legend-item"><span class="legend-dot in-color"></span> INPUT</span>
-              <span class="legend-item"><span class="legend-dot out-color"></span> OUTPUT</span>
+              <span class="legend-item"><span class="legend-dot in-color"></span> IN</span>
+              <span class="legend-item"><span class="legend-dot out-color"></span> OUT</span>
             </div>
           </div>
           <div class="canvas-wrapper">
             <canvas id="freq-canvas" width="600" height="220"></canvas>
           </div>
           <div class="card-footer-info">
-            <span>A-Z ALPHABETIC DISTRIBUTION (VANILLA 2D CANVAS)</span>
+            <span>A-Z DISTRIBUTION (CANVAS 2D)</span>
             <span id="entropy-delta" class="mono-data">Δ DIST: 0.00</span>
           </div>
         </article>
@@ -289,13 +294,13 @@
 
           <div class="vault-input-wrap">
             <label for="hash-input-text">STREAM TO DIGEST:</label>
-            <input type="text" id="hash-input-text" class="terminal-input" placeholder="Type data for irreversible SHA-256 digest..." value="Techfest ZeroCode 2026">
+            <input type="text" id="hash-input-text" class="terminal-input" placeholder="Type data for SHA-256 digest..." value="Techfest ZeroCode 2026">
           </div>
 
           <div class="hash-result-box">
             <div class="hash-label-bar">
               <span>SHA-256 HEX DIGEST:</span>
-              <span class="hash-bits">256 BITS / 64 HEX CHARACTERS</span>
+              <span class="hash-bits">256 BITS</span>
             </div>
             <div class="hash-terminal-display" id="hash-output-display">
               e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
@@ -324,7 +329,6 @@
               <span id="cracker-best-score" class="mono-badge">BEST: ROT 00</span>
             </div>
             <div id="cracker-waterfall" class="cracker-waterfall">
-              <!-- Animated dynamically with 25 shifts -->
               <div class="waterfall-placeholder">Press [CRACK CAESAR] to execute parallel visual decrypt.</div>
             </div>
           </div>
@@ -335,9 +339,9 @@
       <!-- Minimal Brutalist Footer -->
       <footer class="archive-footer">
         <div class="footer-left">
-          <span>ZEROCODE 2026-27 // LABORATORY NODE #84</span>
+          <span>ZEROCODE 2026-27 // NODE #84</span>
           <span class="dim-pipe">|</span>
-          <span>BUILT WITH VANILLA LOGIC & MATHEMATICS</span>
+          <span>BUILT WITH VANILLA LOGIC</span>
         </div>
         <div class="footer-right">
           <span class="terminal-status-light"></span> SECURE EXECUTION CONTEXT
